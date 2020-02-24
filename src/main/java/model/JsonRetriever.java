@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class JsonRetriever
 {
-    private String urlString;
+    private String urlString; 
     private String JsonString;
 
     public JsonRetriever(String title)
