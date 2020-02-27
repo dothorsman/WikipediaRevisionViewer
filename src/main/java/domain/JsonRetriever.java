@@ -1,8 +1,7 @@
-package model;
+package domain;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Scanner;
@@ -18,7 +17,7 @@ public class JsonRetriever
                 + title + "&rvprop=timestamp|user&rvlimit=4&redirects";
     }
 
-    public String search() throws IOException //find out if throws IOException is needed
+    public String search() throws IOException //add connection error message/exception somewhere (maybe not here)
     {
         URL url = new URL(urlString);
         URLConnection connection = url.openConnection();

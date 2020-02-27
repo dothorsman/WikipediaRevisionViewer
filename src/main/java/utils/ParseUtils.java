@@ -2,40 +2,29 @@ package utils;
 
 import com.google.gson.*;
 import exceptions.ParameterIsNotJsonStringException;
-import model.Article;
+import domain.Article;
 
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ParseUtils
 {
-    public static Article parseJsonToArticle(String JsonString) throws ParameterIsNotJsonStringException
+    public static Article parseJsonToArticle(String jsonString) throws ParameterIsNotJsonStringException
     {
-        if(!JsonString.startsWith("{"))
+        if(!jsonString.startsWith("{"))
         {
             throw new ParameterIsNotJsonStringException();
         }
 
-        //Article parts
-            String title = null;
-            HashMap<String, String> timestampsAndUsernames = new HashMap<>();
-                String time;
-                String username;
-            String redirectionString = "";
-            Boolean redirectionBoolean = false;
+        String title = null;
+        HashMap<String, String> timestampsAndUsernames = new HashMap<>();
+            String time;
+            String username;
+        String redirectionString = "No redirection required";
 
         JsonParser jsonParser = new JsonParser();
-        JsonElement rootElement = jsonParser.parse(JsonString);
+        JsonElement rootElement = jsonParser.parse(jsonString);
         JsonObject rootObject = rootElement.getAsJsonObject();
-
-        //if(redirected)
-        //{
-        //    redirected = rootObject.getAsJsonObject("query").getAsJsonArray("redirects").get(0).getAsJsonObject().getAsJsonPrimitive("from").getAsString();
-        //}
-
         JsonObject pages = rootObject.getAsJsonObject("query").getAsJsonObject("pages");
         JsonArray array;
         for (Map.Entry<String, JsonElement> entry : pages.entrySet())
@@ -51,6 +40,13 @@ public class ParseUtils
                 timestampsAndUsernames.put(time, username);
             }
         }
+
+        if(jsonString.contains("redirects"))
+        {
+            redirectionString = "'"+ rootObject.getAsJsonObject("query").getAsJsonArray("redirects").get(0).getAsJsonObject().getAsJsonPrimitive("from").getAsString()
+                    + "' redirected to '" + title + "'";
+        }
+
         Article article = new Article(title, timestampsAndUsernames, redirectionString);
         return article;
     }

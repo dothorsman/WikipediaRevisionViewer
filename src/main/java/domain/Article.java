@@ -1,7 +1,4 @@
-package model;
-
-import com.google.gson.JsonObject;
-import com.google.gson.annotations.SerializedName;
+package domain;
 
 import java.util.Map;
 
@@ -9,22 +6,39 @@ public class Article
 {
     private String title;
     private Map<String, String> timestampsAndUsernames;
-
     private String redirectionString;
-    private boolean redirectionBoolean;
-
-    //add another map?
-
 
     public Article(String title, Map timestampsAndUsernames, String redirectionString)
     {
         this.title = title;
         this.timestampsAndUsernames = timestampsAndUsernames;
         this.redirectionString = redirectionString;
-        //map?
     }
 
-    public String getTitle() { return title; }
+    public String getTitle()
+    {
+        return title;
+    }
+
+    public String getChanges()
+    {
+        int changesCounter = 30;
+        String result = "";
+        for (Map.Entry<String, String> entry : timestampsAndUsernames.entrySet())
+        {
+            if(changesCounter == 0)
+            {
+                return(result);
+            }
+
+            result += "User '" + (entry.getValue() + "' edited the Wikipedia article at " + entry.getKey() + "\n");
+            //reformat timestamps?
+
+            changesCounter--;
+        }
+        return(result);
+    }
+
 
     public String getTimestamps()
     {
@@ -48,5 +62,8 @@ public class Article
         return(result);
     }
 
-    public boolean redirectionUsed() { return redirectionBoolean; }
+    public String getRedirection()
+    {
+        return redirectionString;
+    }
 }
