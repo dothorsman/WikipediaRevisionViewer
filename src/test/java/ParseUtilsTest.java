@@ -25,7 +25,7 @@ public class ParseUtilsTest
         results = parser.parseJsonToArticle("{\"continue\":{\"rvcontinue\":\"20191012231046|920951968\",\"continue\":\"||\"},\"query\":{\"pages\":{\"19651298\":{\"pageid\":19651298,\"ns\":0,\"title\":\"Soup\",\"revisions\":[{\"user\":\"AnomieBOT\",\"timestamp\":\"2019-11-28T06:58:48Z\"},{\"user\":\"Esoteric bearcat\",\"timestamp\":\"2019-11-28T04:58:37Z\"},{\"user\":\"Esoteric bearcat\",\"timestamp\":\"2019-11-28T04:50:07Z\"},{\"user\":\"Rmhermen\",\"timestamp\":\"2019-11-04T17:21:04Z\"}]}}}}");
 
         assertEquals("2019-11-28T06:58:48Z, 2019-11-28T04:58:37Z, 2019-11-28T04:50:07Z, 2019-11-04T17:21:04Z, ", results.getTimestamps());
-    } // Line 35 in the Article Class added this to the string ", ";
+    }
 
 
     @Test
@@ -34,7 +34,7 @@ public class ParseUtilsTest
         results = parser.parseJsonToArticle("{\"continue\":{\"rvcontinue\":\"20191012231046|920951968\",\"continue\":\"||\"},\"query\":{\"pages\":{\"19651298\":{\"pageid\":19651298,\"ns\":0,\"title\":\"Soup\",\"revisions\":[{\"user\":\"AnomieBOT\",\"timestamp\":\"2019-11-28T06:58:48Z\"},{\"user\":\"Esoteric bearcat\",\"timestamp\":\"2019-11-28T04:58:37Z\"},{\"user\":\"Esoteric bearcat\",\"timestamp\":\"2019-11-28T04:50:07Z\"},{\"user\":\"Rmhermen\",\"timestamp\":\"2019-11-04T17:21:04Z\"}]}}}}");
 
         assertEquals("AnomieBOT, Esoteric bearcat, Esoteric bearcat, Rmhermen, ", results.getUsernames());
-    }  // Line 35 in the Article Class added this to the string ", ";
+    }
 
 
 

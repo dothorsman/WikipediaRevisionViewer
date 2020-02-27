@@ -11,8 +11,6 @@ public class Main
 {
     public static void main(String[] args) throws IOException, ParameterIsNotJsonStringException
     {
-        //add while loop ?
-
         Scanner input = new Scanner(System.in);
         System.out.println("Welcome to the Wikipedia Revision Viewer. Please type the title of a Wikipedia article title. ");
         String title = input.nextLine();

@@ -12,7 +12,7 @@ public class CustomWikiDisplay
 
     public String toString()
     {
-        if(article.getTitle() == "")
+        if(article.getTitle() == null)
         {
             return("Empty title was entered. Please try again.");
         }

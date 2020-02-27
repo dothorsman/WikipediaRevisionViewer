@@ -16,6 +16,13 @@ public class ParseUtils
             throw new ParameterIsNotJsonStringException();
         }
 
+        if(jsonString.equals("{\"batchcomplete\":\"\"}"))
+        {
+            Article article = new Article(null, null, null);
+            return(article);
+        }
+
+
         String title = null;
         HashMap<String, String> timestampsAndUsernames = new HashMap<>();
             String time;

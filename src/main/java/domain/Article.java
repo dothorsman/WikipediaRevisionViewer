@@ -22,19 +22,11 @@ public class Article
 
     public String getChanges()
     {
-        int changesCounter = 30;
         String result = "";
         for (Map.Entry<String, String> entry : timestampsAndUsernames.entrySet())
         {
-            if(changesCounter == 0)
-            {
-                return(result);
-            }
-
             result += "User '" + (entry.getValue() + "' edited the Wikipedia article at " + entry.getKey() + "\n");
             //reformat timestamps?
-
-            changesCounter--;
         }
         return(result);
     }
