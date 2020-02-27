@@ -1,5 +1,4 @@
 import model.CustomWikiDisplay;
-import model.JsonParser;
 import model.JsonRetriever;
 
 import java.io.IOException;
@@ -15,12 +14,9 @@ public class Main
 
         JsonRetriever retriever = new JsonRetriever(title);
 
-        JsonParser parser = new JsonParser(retriever.search());
-        //having a method call inside the creation of an object might be against the clean coding rules. Change it if you think so too
-        //parser.parse();
-        //return something (maybe JSON objects or Strings) for CustomWikiDisplay
 
-        CustomWikiDisplay Customdisplay = new CustomWikiDisplay();
+
+        //CustomWikiDisplay Customdisplay = new CustomWikiDisplay();
         //Customdisplay.display();
     }
 }
